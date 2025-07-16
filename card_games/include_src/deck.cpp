@@ -34,13 +34,17 @@ void shuffleDeck(std::string* deck, unsigned int seed){
 
 void printDeck(std::string* deck, std::string type_of_grid){
     for (int x = 0; x < 52; x++) {
-        std::cout << "|" << deck[x] << "|";
         if(type_of_grid == "freecell"){
-            if((x+1 <= 28 && (x+1) % 7 == 0) || (x+1 > 28 && (((x+1)%29)+1) % 6 == 0)){
-                std::cout << "\n";
+            int start_x = x;
+            for(x; x < start_x+8 && x < 52;){
+                std::cout << "|" << deck[x] << "|";
+                x++;
             }
+            x--;
+            std::cout << "\n";
         }
         else if(type_of_grid == "even"){
+            std::cout << "|" << deck[x] << "|";
             if((x+1) % 4 == 0){
                 std::cout << "\n";
             }
